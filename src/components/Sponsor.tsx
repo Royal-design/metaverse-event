@@ -26,13 +26,13 @@ export const Sponsor = () => {
         duration: 1
       }}
     >
-      <div className="px-20 ">
+      <div className="md:px-20 px-8">
         <div className="">
           <div className="flex flex-col items-center gap-1">
-            <h2 className="text-2xl md:text-4xl font-extrabold text-transparent bg-gradient-to-r from-purple-500 via-pink-500 to-yellow-500 bg-clip-text">
+            <h2 className="text-2xl  md:text-4xl font-extrabold text-transparent bg-gradient-to-r from-purple-500 via-pink-500 to-yellow-500 bg-clip-text">
               Sponsored By
             </h2>
-            <p className="text-gray-300 mt-4 max-w-2xl mx-auto">
+            <p className="text-gray-300 text-center mt-4 max-w-2xl mx-auto">
               We are proudly supported by industry leaders pushing the
               boundaries of technology.
             </p>

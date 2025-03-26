@@ -1,7 +1,7 @@
 export const Speakers = () => {
   const speakers = [
     {
-      name: "Dr. Ava Sinclair",
+      name: "Sophia Zhang",
       title: "Metaverse Researcher & Futurist",
       image:
         "https://img.freepik.com/premium-photo/futuristic-portrait-features-person-wearing-neonlit-glasses-reflective-jacket-against-vibrant-glowing-backdrop-showcasing-bold-modern-aesthetic_95891-140082.jpg?ga=GA1.1.695003139.1726237092&semt=ais_hybrid",
@@ -15,10 +15,10 @@ export const Speakers = () => {
       bio: "Expert in decentralized technologies, bringing Web3 into mainstream adoption."
     },
     {
-      name: "Sophia Zhang",
+      name: "Dr. Sinclair",
       title: "AI & Virtual Reality Engineer",
       image:
-        "https://img.freepik.com/free-photo/black-man-posing_23-2148171607.jpg?ga=GA1.1.695003139.1726237092&semt=ais_hybrid",
+        "https://media.istockphoto.com/id/1410177463/photo/stylish-guy-neon-fashion-night-trendy-clothes.jpg?s=612x612&w=0&k=20&c=4XDUmbIVUDmFF_DY6lQ-vDnuhtGpCV49yJ1BSibKh48=",
       bio: "Building the next generation of AI-driven virtual experiences."
     }
   ];
@@ -45,7 +45,7 @@ export const Speakers = () => {
               <img
                 src={speaker.image}
                 alt={speaker.name}
-                className="rounded-full w-[10rem] h-[10rem] object-cover border border-purple-500 shadow-lg"
+                className="rounded-full w-[10rem] h-[10rem] object-top object-cover border border-purple-500 shadow-lg"
               />
               <h3 className="mt-4 text-lg md:text-xl font-bold text-white">
                 {speaker.name}

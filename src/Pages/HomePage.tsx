@@ -1,5 +1,4 @@
 import { Countdown } from "@/components/Countdown";
-import { Footer } from "@/components/Footer";
 import { HomeHeroSection } from "@/components/HomeHeroSection";
 import { LineSkew } from "@/components/LineSkew";
 import { MainSection } from "@/components/MainSection";
@@ -19,7 +18,6 @@ export const HomePage = () => {
       <Speakers />
       <Products />
       <Sponsor />
-      <Footer />
     </div>
   );
 };

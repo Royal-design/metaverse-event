@@ -1,5 +1,3 @@
-import React from "react";
-
 export const LineSkew = () => {
   return (
     <div className="mt-[-4rem] flex flex-col gap-2">
