@@ -6,6 +6,9 @@ import { ErrorPage } from "@/Pages/ErrorPage";
 import { useAppDispatch } from "./redux/store";
 import { setProducts } from "./redux/slice/productSlice";
 import { products } from "./assets/data/products";
+import { Form2 } from "./components/Form2";
+import { Form1 } from "./components/Form1";
+import { Ticket } from "lucide-react";
 const HomePage = lazy(() =>
   import("@/Pages/HomePage").then(({ HomePage }) => ({ default: HomePage }))
 );
@@ -59,7 +62,21 @@ const router = createBrowserRouter([
       },
       {
         path: "/generate-ticket",
-        element: <TicketPage />
+        element: <TicketPage />,
+        children: [
+          {
+            path: "/generate-ticket/step1",
+            element: <Form1 />
+          },
+          {
+            path: "/generate-ticket/step2",
+            element: <Form2 />
+          },
+          {
+            path: "/generate-ticket/ticket",
+            element: <Ticket />
+          }
+        ]
       }
     ]
   }

@@ -2,10 +2,12 @@ import { Action, configureStore, ThunkAction } from "@reduxjs/toolkit";
 
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import { productSlice } from "./slice/productSlice";
+import { formSlice } from "./slice/formSlice";
 
 export const store = configureStore({
   reducer: {
-    products: productSlice.reducer
+    products: productSlice.reducer,
+    form: formSlice.reducer
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

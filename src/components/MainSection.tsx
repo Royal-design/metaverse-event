@@ -3,7 +3,7 @@ export const MainSection = () => {
     <section className="md:px-20 px-8  w-full pt-12">
       <main className="flex flex-col md:flex-row w-full gap-12">
         <div className="flex flex-col md:flex-row w-full md:w-[50%] items-center gap-4">
-          <div className="rounded-tl-4xl overflow-hidden relative">
+          <div className="rounded-tl-4xl max-sm:hidden overflow-hidden relative">
             <img
               src="https://img.freepik.com/free-photo/metaverse-concept-collage-design_23-2149419859.jpg?ga=GA1.1.695003139.1726237092&semt=ais_hybrid"
               alt="image"
@@ -11,7 +11,7 @@ export const MainSection = () => {
             />
           </div>
           <div className="flex flex-col gap-4">
-            <div className="rounded-tr-4xl rounded-bl-4xl overflow-hidden relative">
+            <div className="rounded-tr-4xl max-sm:hidden rounded-bl-4xl overflow-hidden relative">
               <img
                 src="https://img.freepik.com/free-photo/portrait-young-african-american-man-with-vr-glasses_23-2148932803.jpg?ga=GA1.1.695003139.1726237092&semt=ais_hybrid"
                 alt="image"

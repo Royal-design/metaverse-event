@@ -62,20 +62,26 @@ export const TestimonialSwiper = () => {
       >
         {testimonials.map((testimonial) => (
           <SwiperSlide key={testimonial.id}>
-            <div className="bg-gradient-to-br h-[300px] from-purple-500 via-pink-500 to-yellow-500 p-8 rounded-lg text-white shadow-lg">
-              <div className="flex flex-col items-center">
-                <img
-                  src={testimonial.image}
-                  alt="testimonial"
-                  className="rounded-full w-20 h-20 object-cover object-top border-4 border-white shadow-lg"
-                />
-                <blockquote className="text-lg mt-4 text-center">
-                  "{testimonial.quote}"
-                </blockquote>
-                <cite className="block mt-4">
-                  <span className="font-bold">{testimonial.author}</span> -{" "}
-                  <span className="text-purple-400">{testimonial.role}</span>
-                </cite>
+            <div className="bg-gradient-to-br h-[150px] from-purple-500 via-pink-500 overflow-hidden to-yellow-500 p-[1px] rounded-3xl text-white shadow-lg">
+              <div className="bg-gradient-to-br  px-2 h-full rounded-3xl from-black to-[#270427]">
+                <div className="flex items-center gap-2">
+                  <img
+                    src={testimonial.image}
+                    alt="testimonial"
+                    className="rounded-full w-20 h-20 object-cover object-top border-2 border-white shadow-lg"
+                  />
+                  <div className="flex flex-col text-left ">
+                    <blockquote className="mt-4">
+                      "{testimonial.quote}"
+                    </blockquote>
+                    <cite className="mt-4 text-sm">
+                      <span className="font-bold ">{testimonial.author}</span> -{" "}
+                      <span className="text-purple-400">
+                        {testimonial.role}
+                      </span>
+                    </cite>
+                  </div>
+                </div>
               </div>
             </div>
           </SwiperSlide>

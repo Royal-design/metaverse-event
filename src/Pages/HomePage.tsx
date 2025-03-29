@@ -6,8 +6,14 @@ import { Products } from "@/components/Product";
 import { ProgrammeSchedule } from "@/components/ProgrammeSchedule";
 import { Speakers } from "@/components/Speakers";
 import { Sponsor } from "@/components/Sponsor";
+import { useEffect } from "react";
 
 export const HomePage = () => {
+  useEffect(() => {
+    window.scrollTo({
+      top: 0
+    });
+  }, []);
   return (
     <div>
       <HomeHeroSection />

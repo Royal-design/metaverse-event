@@ -1,19 +1,23 @@
 import { TestimonialSwiper } from "@/components/TestimonialSwiper";
 import { BackgroundBeams } from "@/components/ui/background-beams";
+import { useEffect } from "react";
 
 export const ExperiencePage = () => {
+  useEffect(() => {
+    window.scrollTo({
+      top: 0
+    });
+  }, []);
   return (
     <section className="relative font-roboto flex flex-col items-center text-center">
-      {/* Hero Section */}
-
-      <div className="h-[20rem] w-full max-sm:h-full relative">
+      <div className="md:h-[20rem] max-sm:pb-12  w-full h-full relative">
         <img
           src="https://media.istockphoto.com/id/1390456645/photo/metaverse-and-blockchain-technology-concepts-person-with-an-experiences-of-metaverse-virtual.webp?a=1&b=1&s=612x612&w=0&k=20&c=jHsN5XXNnjCauD_ICdJJWPBnuPn3k2cTFOtMOEBThwI="
           alt="hero"
           className="h-full w-full object-cover"
         />
-        <article className="absolute   max-sm:px-4 inset-0 bg-gradient-to-br from-black to-[#27042770]  flex flex-col gap-4 items-center justify-center">
-          <h1 className="text-2xl md:text-4xl font-extrabold text-transparent bg-gradient-to-r from-purple-500 via-pink-500 to-yellow-500 bg-clip-text">
+        <article className="absolute h-full max-sm:px-4 inset-0 bg-gradient-to-br from-black to-[#27042770]  flex flex-col gap-4 items-center justify-center">
+          <h1 className="text-2xl  md:text-4xl font-extrabold text-transparent bg-gradient-to-r from-purple-500 via-pink-500 to-yellow-500 bg-clip-text">
             Step Into the Future
           </h1>
 

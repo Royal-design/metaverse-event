@@ -1,5 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
-
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Nanum+Myeongjo&family=Road+Rage&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
 @import "tailwindcss";
 @import "tw-animate-css";
 
@@ -21,6 +20,15 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   --radius: 0.625rem;
+  --border-heavy: #4f0e3c;
+  --border-light: #63184d;
+  --background-light: #3b043b;
+  --background-heavy: #270427;
+  --button-background-light: #3b043b;
+  --button-background-heavy: #270427;
+  --button-background-lighter: #7e0d7e;
+  --button-background-lightest: #9f109f;
+
   --background: oklch(1 0 0);
   --foreground: oklch(0.129 0.042 264.695);
   --card: oklch(1 0 0);
@@ -55,6 +63,14 @@
 }
 
 .dark {
+  --border-heavy: #4f0e3c;
+  --border-light: #63184d;
+  --background-light: #3b043b;
+  --background-heavy: #270427;
+  --button-background-light: #3b043b;
+  --button-background-heavy: #270427;
+  --button-background-lighter: #7e0d7e;
+  --button-background-lightest: #9f109f;
   --background: oklch(0.129 0.042 264.695);
   --foreground: oklch(0.984 0.003 247.858);
   --card: oklch(0.208 0.042 265.755);
@@ -93,10 +109,21 @@
     var(--animation-direction, forwards) linear infinite;
   --font-roboto: "Roboto", serif;
   --font-lato: "Lato", sans-serif;
+  --font-nanum-myeongjo: "Nanum Myeongjo", serif;
+  --font-road-rage: "Road Rage", serif;
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
+  --color-border-heavy: var(--border-heavy);
+  --color-border-light: var(--border-light);
+  --color-background-light: var(--background-light);
+  --color-background-heavy: var(--background-heavy);
+  --color-button-background-light: var(--button-background-light);
+  --color-button-background-heavy: var(--button-background-heavy);
+  --color-button-background-lighter: var(--button-background-lighter);
+  --color-button-background-lightest: var(--button-background-lightest);
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -291,16 +318,18 @@
   width: 2rem;
   &::after {
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-    background-color: white;
+    background-image: linear-gradient(to bottom right, black, #270427);
+    border: 1px solid grey;
     z-index: 0;
     font-size: 1rem;
     width: 100%;
+    opacity: 0.8;
     height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 100%;
-    color: black;
+    color: grey;
   }
 }
 
@@ -308,16 +337,29 @@
   height: 2rem;
   width: 2rem;
   &::after {
-    background-color: white;
+    background-image: linear-gradient(to bottom right, black, #270427);
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     z-index: 0;
     font-size: 1rem;
     width: 100%;
     height: 100%;
     display: flex;
+    border: 1px solid grey;
+    opacity: 0.8;
     justify-content: center;
     align-items: center;
     border-radius: 100%;
-    color: black;
+    color: grey;
   }
+}
+
+/* mask */
+.mask-rounded {
+  -webkit-mask: radial-gradient(circle 20px at top left, #0000 98%, #000) top
+      left,
+    radial-gradient(circle 20px at top right, #0000 98%, #000) top right,
+    radial-gradient(circle 20px at bottom left, #0000 98%, #000) bottom left,
+    radial-gradient(circle 20px at bottom right, #0000 98%, #000) bottom right;
+  -webkit-mask-size: 51% 51%;
+  -webkit-mask-repeat: no-repeat;
 }
