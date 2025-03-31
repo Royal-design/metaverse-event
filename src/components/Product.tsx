@@ -1,9 +1,15 @@
-import { useAppSelector } from "@/redux/store";
+import { addToCart } from "@/redux/slice/cartSlice";
+import { ProductType } from "@/redux/slice/productSlice";
+import { useAppDispatch, useAppSelector } from "@/redux/store";
 import { formatPrice } from "@/utilities/formatPrice";
+import { Button } from "./ui/button";
 
 export const Products = () => {
   const products = useAppSelector((state) => state.products.products);
-
+  const dispatch = useAppDispatch();
+  const addToCartClick = (product: ProductType) => {
+    dispatch(addToCart({ ...product, qty: 1 }));
+  };
   return (
     <section id="products" className="py-8 md:py-12 px-8 md:px-20 text-center">
       <h2 className="text-2xl md:text-4xl font-extrabold text-transparent bg-gradient-to-r from-purple-500 via-pink-500 to-yellow-500 bg-clip-text">
@@ -37,9 +43,12 @@ export const Products = () => {
               <p className="text-lg font-semibold text-purple-400 mt-3">
                 {formatPrice(product.price)}
               </p>
-              <button className="mt-4 px-6 py-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold rounded-lg hover:opacity-80 transition">
+              <Button
+                onClick={() => addToCartClick(product)}
+                className="mt-4 px-6 py-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold rounded-lg hover:opacity-80 transition"
+              >
                 Buy Now
-              </button>
+              </Button>
             </div>
           </div>
         ))}

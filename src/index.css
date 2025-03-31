@@ -170,6 +170,11 @@
     @apply bg-gradient-to-br from-black to-[#270427]  text-white;
   }
 }
+@layer components {
+  .circle {
+    @apply bg-purple-400 text-white w-5 h-5 p-1 rounded-full flex items-center justify-center absolute top-[-12px] left-[1rem];
+  }
+}
 
 /* spinner loader */
 .spinner {

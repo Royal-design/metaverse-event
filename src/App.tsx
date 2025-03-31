@@ -31,6 +31,11 @@ const ExperiencePage = lazy(() =>
     default: ExperiencePage
   }))
 );
+const CartPage = lazy(() =>
+  import("@/Pages/CartPage").then(({ CartPage }) => ({
+    default: CartPage
+  }))
+);
 const router = createBrowserRouter([
   {
     element: (
@@ -77,6 +82,10 @@ const router = createBrowserRouter([
             element: <Ticket />
           }
         ]
+      },
+      {
+        path: "/cart",
+        element: <CartPage />
       }
     ]
   }
