@@ -1,7 +1,7 @@
 import { Card, CardContent } from "./ui/card";
 import { Button } from "./ui/button";
 import { CartItem, removeFromCart, updateCart } from "@/redux/slice/cartSlice";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { X } from "lucide-react";
 import React from "react";
@@ -38,6 +38,11 @@ export const CartListMobile = ({ item }: ItemType) => {
       dispatch(updateCart({ id, qty: newQuantity }));
     }
   };
+  useEffect(() => {
+    window.scrollTo({
+      top: 0
+    });
+  }, []);
   return (
     <Card className="w-full p-0  bg-gradient-to-br from-black to-[#270427] border-border-light">
       <CardContent className=" h-full flex w-full  gap-2 p-2">

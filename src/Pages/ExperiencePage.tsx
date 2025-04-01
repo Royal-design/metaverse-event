@@ -37,7 +37,7 @@ export const ExperiencePage = () => {
   };
   return (
     <section className="relative experience font-roboto flex flex-col items-center ">
-      <div className="md:h-[20rem] max-sm:pb-12  w-full h-full relative">
+      <div className="md:h-[30rem] max-sm:pb-12  w-full h-full relative">
         <img
           src="https://media.istockphoto.com/id/1390456645/photo/metaverse-and-blockchain-technology-concepts-person-with-an-experiences-of-metaverse-virtual.webp?a=1&b=1&s=612x612&w=0&k=20&c=jHsN5XXNnjCauD_ICdJJWPBnuPn3k2cTFOtMOEBThwI="
           alt="hero"

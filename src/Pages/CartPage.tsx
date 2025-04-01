@@ -15,6 +15,7 @@ import { clearCart, order } from "@/redux/slice/cartSlice";
 import { RootState } from "@/redux/store";
 import { formatPrice } from "@/utilities/formatPrice";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
+import { useEffect } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -31,7 +32,11 @@ export const CartPage = () => {
   const handleClearCart = () => {
     dispatch(clearCart());
   };
-
+  useEffect(() => {
+    window.scrollTo({
+      top: 0
+    });
+  }, []);
   const handleToken = async () => {
     const docRef = collection(db, "orders");
     await addDoc(docRef, {

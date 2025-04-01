@@ -26,7 +26,7 @@ export const Speakers = () => {
   ];
 
   return (
-    <section className="py-8 md:py-12 px-8 md:px-20 text-center">
+    <section className="mt-8 md:mt-12 px-8 md:px-20 text-center">
       <h2 className="text-2xl md:text-4xl  font-extrabold text-transparent bg-gradient-to-r from-purple-500 via-pink-500 to-yellow-500 bg-clip-text">
         Meet Our Keynote Speakers
       </h2>

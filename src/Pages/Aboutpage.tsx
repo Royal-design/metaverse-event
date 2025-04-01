@@ -10,32 +10,17 @@ export const Aboutpage = () => {
 
   // Variants for sliding in from left and right
   const slideInVariantLeft = {
-    hidden: { opacity: 0, x: -100 }, // start from left off-screen
+    hidden: { opacity: 0, x: -100 },
     visible: {
       opacity: 1,
       x: 0,
-      transition: { duration: 1, ease: "easeOut" }
-    }
-  };
-
-  const slideInVariantRight = {
-    hidden: { opacity: 0, x: 100 }, // start from right off-screen
-    visible: {
-      opacity: 1,
-      x: 0,
-      transition: { duration: 1, ease: "easeOut" }
+      transition: { duration: 1 }
     }
   };
 
   return (
     <section className="min-h-screen text-white">
-      <motion.div
-        variants={slideInVariantLeft}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.1 }}
-        className="h-[20rem] w-full max-sm:h-full relative"
-      >
+      <div className="h-[30rem] w-full max-sm:h-full relative">
         <img
           src="https://media.istockphoto.com/id/1416029563/photo/metaverse-digital-cyber-world-technology-man-with-virtual-reality-vr-goggle-playing-ar.webp?a=1&b=1&s=612x612&w=0&k=20&c=gqNvFz2RsmVYdLBATZQxpwna4AojBZuxkwldTqOzm0M="
           alt="hero"
@@ -51,15 +36,15 @@ export const Aboutpage = () => {
             dimension of technology, innovation, and limitless imagination.
           </p>
         </article>
-      </motion.div>
+      </div>
 
       <div className="max-w-7xl px-8 md:px-20 py-12 mx-auto">
         {/* STORY SECTION */}
         <motion.div
-          variants={slideInVariantRight}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.1 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, y: -10 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.8 }}
           className="bg-black bg-opacity-30 md:p-10 p-6 rounded-2xl border border-purple-700 mb-12 shadow-lg"
         >
           <h2 className="text-2xl md:text-3xl font-bold text-purple-400 mb-4">
@@ -106,10 +91,10 @@ export const Aboutpage = () => {
 
         {/* CORE VALUES */}
         <motion.div
-          variants={slideInVariantRight}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.1 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          initial={{ opacity: 0, x: 50 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.8 }}
           className="bg-black bg-opacity-30 md:p-10 p-6 rounded-xl mb-16 border border-purple-500"
         >
           <h3 className="text-2xl md:text-3xl  font-bold text-purple-400 mb-6 md:text-center">

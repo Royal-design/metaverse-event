@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Button } from "./ui/button";
+import { Link } from "react-router-dom";
 
 export const HomeHeroSection = () => {
   return (
@@ -49,14 +49,20 @@ export const HomeHeroSection = () => {
           className="mt-6 flex gap-4"
         >
           <motion.div whileHover={{ scale: 1.1 }}>
-            <Button className="px-6 py-3 bg-neon-pink text-black font-semibold rounded-lg shadow-lg bg-[#ec3a90] hover:bg-[#f060a6] transition">
+            <Link
+              to="/generate-ticket"
+              className="px-6 py-3 bg-neon-pink text-black font-semibold rounded-lg shadow-lg bg-[#ec3a90] hover:bg-[#f060a6] transition"
+            >
               Get Tickets
-            </Button>
+            </Link>
           </motion.div>
           <motion.div whileHover={{ scale: 1.1 }}>
-            <Button className="px-6 py-3 border border-purple-600 bg-transparent text-purple-600 font-semibold rounded-lg shadow-lg hover:bg-purple-600 hover:text-black transition">
+            <Link
+              to="/about"
+              className="px-6 py-3 border border-purple-600 bg-transparent text-purple-600 font-semibold rounded-lg shadow-lg hover:bg-purple-600 hover:text-black transition"
+            >
               Learn More
-            </Button>
+            </Link>
           </motion.div>
         </motion.div>
       </article>

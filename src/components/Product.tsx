@@ -28,7 +28,7 @@ export const Products = () => {
 
   const zoomInVariant = {
     hidden: { opacity: 0, scale: 0.8 },
-    visible: { opacity: 1, scale: 1, transition: { duration: 0.6 } }
+    visible: { opacity: 1, scale: 1, transition: { duration: 0.4 } }
   };
 
   return (
@@ -36,9 +36,9 @@ export const Products = () => {
       variants={staggeredVariant}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, amount: 0.1 }}
+      viewport={{ once: true, amount: 0.05 }}
       id="products"
-      className="py-8 md:py-12 px-8 md:px-20 text-center"
+      className="my-8 md:my-12 px-8  md:px-20 text-center"
     >
       <h2 className="text-2xl md:text-4xl font-extrabold text-transparent bg-gradient-to-r from-purple-500 via-pink-500 to-yellow-500 bg-clip-text">
         Explore Our Exclusive Products

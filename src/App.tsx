@@ -9,6 +9,9 @@ import { products } from "./assets/data/products";
 import { Form2 } from "./components/Form2";
 import { Form1 } from "./components/Form1";
 import { Ticket } from "lucide-react";
+import { PublicLayout } from "./layouts/PublicLayout";
+import { PrivateLayout } from "./layouts/PrivateLayout";
+import { checkAuthState } from "./redux/slice/authSlice";
 const HomePage = lazy(() =>
   import("@/Pages/HomePage").then(({ HomePage }) => ({ default: HomePage }))
 );
@@ -34,6 +37,16 @@ const ExperiencePage = lazy(() =>
 const CartPage = lazy(() =>
   import("@/Pages/CartPage").then(({ CartPage }) => ({
     default: CartPage
+  }))
+);
+const LoginPage = lazy(() =>
+  import("@/Pages/LoginPage").then(({ LoginPage }) => ({
+    default: LoginPage
+  }))
+);
+const RegisterPage = lazy(() =>
+  import("@/Pages/RegisterPage").then(({ RegisterPage }) => ({
+    default: RegisterPage
   }))
 );
 const router = createBrowserRouter([
@@ -84,8 +97,20 @@ const router = createBrowserRouter([
         ]
       },
       {
-        path: "/cart",
-        element: <CartPage />
+        element: <PrivateLayout />,
+        children: [
+          {
+            path: "/cart",
+            element: <CartPage />
+          }
+        ]
+      },
+      {
+        element: <PublicLayout />,
+        children: [
+          { path: "/register", element: <RegisterPage /> },
+          { path: "/login", element: <LoginPage /> }
+        ]
       }
     ]
   }
@@ -94,6 +119,7 @@ const router = createBrowserRouter([
 function App() {
   const dispatch = useAppDispatch();
   useEffect(() => {
+    dispatch(checkAuthState());
     dispatch(setProducts(products));
   }, [dispatch]);
 
