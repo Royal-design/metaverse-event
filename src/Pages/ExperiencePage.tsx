@@ -1,6 +1,7 @@
 import { TestimonialSwiper } from "@/components/TestimonialSwiper";
-import { BackgroundBeams } from "@/components/ui/background-beams";
 import { useEffect } from "react";
+import { NavLink } from "react-router-dom";
+import { motion } from "framer-motion";
 
 export const ExperiencePage = () => {
   useEffect(() => {
@@ -8,15 +9,41 @@ export const ExperiencePage = () => {
       top: 0
     });
   }, []);
+
+  const inViewVariant = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.8, ease: "easeOut" }
+    }
+  };
+  const staggeredVariant = {
+    hidden: { opacity: 0, scale: 0.8, y: 20 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        delay: 0.3,
+        staggerChildren: 0.2
+      }
+    }
+  };
+  const zoomInVariant = {
+    hidden: { opacity: 0, scale: 0.8 },
+    visible: { opacity: 1, scale: 1, transition: { duration: 0.6 } }
+  };
   return (
-    <section className="relative font-roboto flex flex-col items-center text-center">
+    <section className="relative experience font-roboto flex flex-col items-center ">
       <div className="md:h-[20rem] max-sm:pb-12  w-full h-full relative">
         <img
           src="https://media.istockphoto.com/id/1390456645/photo/metaverse-and-blockchain-technology-concepts-person-with-an-experiences-of-metaverse-virtual.webp?a=1&b=1&s=612x612&w=0&k=20&c=jHsN5XXNnjCauD_ICdJJWPBnuPn3k2cTFOtMOEBThwI="
           alt="hero"
           className="h-full w-full object-cover"
         />
-        <article className="absolute h-full max-sm:px-4 inset-0 bg-gradient-to-br from-black to-[#27042770]  flex flex-col gap-4 items-center justify-center">
+        <article className="absolute h-full max-sm:px-4 text-center inset-0 bg-gradient-to-br from-black to-[#27042770]  flex flex-col gap-4 items-center justify-center">
           <h1 className="text-2xl  md:text-4xl font-extrabold text-transparent bg-gradient-to-r from-purple-500 via-pink-500 to-yellow-500 bg-clip-text">
             Step Into the Future
           </h1>
@@ -26,21 +53,27 @@ export const ExperiencePage = () => {
             interactive virtual worlds, AI-powered experiences, and next-gen
             Web3 innovations.
           </p>
-          <p className="text-gray-400 mt-4 text-sm md:text-base max-w-2xl mx-auto">
+          <p className="text-gray-400 mt-4 md:text-lg  max-w-2xl mx-auto">
             Whether you're a tech enthusiast, developer, or business leader,
             this is your gateway to the digital revolution.
           </p>
         </article>
       </div>
-      <div className="w-full px-8 md:px-20 py-12">
-        <div className="max-w-5xl  mb-16">
+      <div className="w-full px-8 md:px-20 md:text-center pt-12">
+        <motion.div
+          variants={inViewVariant}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.1 }}
+          className="max-w-5xl  mb-16"
+        >
           <h2 className="text-2xl font-extrabold ">
             🌌{" "}
             <span className="text-transparent bg-gradient-to-r from-purple-500 via-pink-500 to-yellow-500 bg-clip-text">
               Explore the Metaverse
             </span>
           </h2>
-          <p className="text-gray-300 mt-4 text-lg leading-relaxed">
+          <p className="text-gray-300 mt-4 md:text-lg leading-relaxed">
             The <span className="text-purple-400">Metaverse</span> is an
             expansive universe where the boundaries between physical and virtual
             realities blur. Explore immersive virtual worlds and discover a new
@@ -54,11 +87,20 @@ export const ExperiencePage = () => {
             <span className="text-purple-400">virtual conferences</span>, and{" "}
             <span className="text-yellow-400">interactive showcases</span>.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-16 max-w-6xl">
+        <motion.div
+          variants={staggeredVariant}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.1 }}
+          className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-16 max-w-6xl"
+        >
           {/* Virtual Reality Experience */}
-          <div className="p-[2px] rounded-lg   bg-gradient-to-r from-purple-500 via-pink-500 to-yellow-500">
+          <motion.div
+            variants={zoomInVariant}
+            className="p-[1px] rounded-lg   bg-gradient-to-r from-purple-500 via-pink-500 to-yellow-500"
+          >
             <div className="p-6 bg-black rounded-lg">
               <h3 className="text-xl md:text-2xl font-bold text-white drop-shadow-lg">
                 🕶️{" "}
@@ -80,10 +122,13 @@ export const ExperiencePage = () => {
                 is here, and you’re invited to take part.
               </p>
             </div>
-          </div>
+          </motion.div>
 
           {/* AI-Powered Interactions */}
-          <div className="p-[2px] rounded-lg bg-gradient-to-r from-purple-500 via-pink-500 to-yellow-500">
+          <motion.div
+            variants={zoomInVariant}
+            className="p-[1px] rounded-lg bg-gradient-to-r from-purple-500 via-pink-500 to-yellow-500"
+          >
             <div className="p-6 bg-black rounded-lg">
               <h3 className="text-xl md:text-2xl font-bold text-white drop-shadow-lg">
                 🤖{" "}
@@ -113,10 +158,13 @@ export const ExperiencePage = () => {
                 your interactions in ways you never imagined.
               </p>
             </div>
-          </div>
+          </motion.div>
 
           {/* NFT & Web3 Marketplace */}
-          <div className="p-[2px] rounded-lg bg-gradient-to-r from-purple-500 via-pink-500 to-yellow-500">
+          <motion.div
+            variants={zoomInVariant}
+            className="p-[1px] rounded-lg bg-gradient-to-r from-purple-500 via-pink-500 to-yellow-500"
+          >
             <div className="p-6 bg-black rounded-lg">
               <h3 className="text-xl md:text-2xl font-bold text-white drop-shadow-lg">
                 🎨{" "}
@@ -137,10 +185,13 @@ export const ExperiencePage = () => {
                 collection in a **secure, decentralized environment**.
               </p>
             </div>
-          </div>
+          </motion.div>
 
           {/* Networking & Community */}
-          <div className="p-[2px] rounded-lg bg-gradient-to-r from-purple-500 via-pink-500 to-yellow-500">
+          <motion.div
+            variants={zoomInVariant}
+            className="p-[1px] rounded-lg bg-gradient-to-r from-purple-500 via-pink-500 to-yellow-500"
+          >
             <div className="p-6 bg-black rounded-lg">
               <h3 className="text-xl md:text-2xl font-bold text-white drop-shadow-lg">
                 🌐{" "}
@@ -152,10 +203,9 @@ export const ExperiencePage = () => {
                 Meet with{" "}
                 <span className="text-yellow-400">industry leaders</span>,{" "}
                 <span className="text-purple-400">developers</span>, and{" "}
-                <span className="text-yellow-400">investors</span> in
-                **real-time virtual events**. Whether you’re here to learn or
-                collaborate, the Metaverse Expo offers you a chance to connect
-                like never before.
+                <span className="text-yellow-400">investors</span> in real-time
+                virtual events. Whether you’re here to learn or collaborate, the
+                Metaverse Expo offers you a chance to connect like never before.
               </p>
               <p className="text-gray-400 mt-2 text-sm md:text-base">
                 Engage in live Q&A sessions, participate in panel discussions,
@@ -163,23 +213,35 @@ export const ExperiencePage = () => {
                 space designed for collaboration and growth.
               </p>
             </div>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
         {/* Interactive Workshops */}
-        <div className="max-w-5xl mt-24 text-center">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          variants={inViewVariant}
+          viewport={{ once: true, amount: 0.1 }}
+          className="max-w-5xl mt-12 md:text-center"
+        >
           <h2 className="text-2xl font-extrabold ">
             🛠️{" "}
             <span className="text-transparent bg-gradient-to-r from-purple-500 via-pink-500 to-yellow-500 bg-clip-text">
               Hands-On Workshops
             </span>
           </h2>
-          <p className="text-gray-300 mt-4 text-lg max-w-2xl mx-auto">
+          <p className="text-gray-300 mt-4 md:text-lg md:max-w-2xl mx-auto">
             Get hands-on experience with the latest Metaverse development tools,
             AI integrations, and Web3 frameworks. Our expert-led workshops offer
             exclusive insights into building virtual experiences.
           </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-16">
+          <motion.div
+            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, x: 100 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.8 }}
+            className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-16"
+          >
             <div className="bg-gradient-to-br from-black to-[#270427] border-l border-yellow-400 p-6 rounded-lg rounded-tl-3xl rounded-br-3xl  text-white">
               <h3 className="text-xl font-bold">🕹️ VR & AR Development</h3>
               <p className="mt-2 text-gray-300">
@@ -203,31 +265,41 @@ export const ExperiencePage = () => {
                 digital ownership.
               </p>
             </div>
-          </div>
-        </div>
-
-        <TestimonialSwiper />
+          </motion.div>
+        </motion.div>
+        <motion.div
+          whileInView={{ opacity: 1, x: 0 }}
+          initial={{ opacity: 0, x: -100 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.8 }}
+        >
+          <TestimonialSwiper />
+        </motion.div>
 
         {/* Final CTA Section */}
-        <div className="mt-16 text-center">
+        <motion.div
+          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, y: 40 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.8 }}
+          className="mt-12 md:text-center z-10"
+        >
           <h2 className="text-2xl font-extrabold text-transparent bg-gradient-to-r from-purple-500 via-pink-500 to-yellow-500 bg-clip-text">
             Ready to Enter the Future?
           </h2>
-          <p className="text-gray-300 mt-4 text-lg max-w-2xl mx-auto">
+          <p className="text-gray-300 mt-4 md:text-lg md:max-w-2xl mx-auto">
             Don't miss your chance to be part of this groundbreaking event. The
-            Metaverse Expo is more than just an event—it's a movement.
+            Metaverse Expo is more than just an event, it's a movement.
           </p>
 
-          <a
-            href="#"
-            className="px-8 py-3 mt-6 inline-block bg-gradient-to-r from-purple-500 via-pink-500 to-yellow-500 text-black font-bold rounded-full text-lg hover:scale-105 transition"
+          <NavLink
+            to="/generate-ticket"
+            className="px-8 py-3 mt-6 cursor-pointer z-10 inline-block bg-gradient-to-r from-purple-500 via-pink-500 to-yellow-500 text-black font-bold rounded-full text-lg hover:scale-105 transition"
           >
             Secure Your Spot 🚀
-          </a>
-        </div>
+          </NavLink>
+        </motion.div>
       </div>
-
-      <BackgroundBeams />
     </section>
   );
 };

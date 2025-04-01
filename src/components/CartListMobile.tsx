@@ -1,4 +1,4 @@
-import { Card, CardContent, CardHeader } from "./ui/card";
+import { Card, CardContent } from "./ui/card";
 import { Button } from "./ui/button";
 import { CartItem, removeFromCart, updateCart } from "@/redux/slice/cartSlice";
 import { useState } from "react";
@@ -40,7 +40,6 @@ export const CartListMobile = ({ item }: ItemType) => {
   };
   return (
     <Card className="w-full p-0  bg-gradient-to-br from-black to-[#270427] border-border-light">
-      <CardHeader className="p-0" />
       <CardContent className=" h-full flex w-full  gap-2 p-2">
         <figure className="h-[4rem] w-[4rem]  rounded-sm bg-background-heavy">
           <img src={item.image} alt={item.name} className="w-full h-full " />

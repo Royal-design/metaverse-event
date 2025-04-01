@@ -1,3 +1,5 @@
+import { motion } from "framer-motion";
+
 export const Speakers = () => {
   const speakers = [
     {
@@ -42,10 +44,13 @@ export const Speakers = () => {
           >
             {/* Inner Content */}
             <div className="p-6 bg-gradient-to-br from-black to-[#270427] rounded-tl-[2rem] rounded-br-[2rem] flex flex-col items-center">
-              <img
+              {/* Apply Framer Motion here to scale image */}
+              <motion.img
                 src={speaker.image}
                 alt={speaker.name}
                 className="rounded-full w-[10rem] h-[10rem] object-top object-cover border border-purple-500 shadow-lg"
+                whileHover={{ scale: 1.1 }} // Scale effect on hover
+                transition={{ duration: 0.3 }} // Duration for smooth scaling
               />
               <h3 className="mt-4 text-lg md:text-xl font-bold text-white">
                 {speaker.name}

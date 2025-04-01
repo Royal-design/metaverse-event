@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import { BackgroundBeams } from "./ui/background-beams";
 
 export const ProgrammeSchedule = () => {
@@ -28,14 +29,29 @@ export const ProgrammeSchedule = () => {
     }
   ];
 
+  const fadeInVariant = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.8, ease: "easeOut" }
+    }
+  };
+
   return (
-    <section className="relative font-roboto py-8 md:py-12  mt-8 px-8 md:px-20 flex flex-col md:flex-row gap-4 md:gap-12 items-center md:items-start justify-between">
+    <motion.section className="relative font-roboto py-8 md:py-12 mt-8 px-8 md:px-20 flex flex-col md:flex-row gap-4 md:gap-12 items-center md:items-start justify-between">
       {/* Left Section - Intro Text */}
-      <div className="max-w-lg   mb-10 md:mb-0">
+      <motion.div
+        className="max-w-lg mb-10 md:mb-0"
+        variants={fadeInVariant}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+      >
         <h2 className="text-2xl text-center md:text-start md:text-4xl font-extrabold text-transparent bg-gradient-to-r from-purple-500 via-pink-500 to-yellow-500 bg-clip-text">
           Programme Schedule
         </h2>
-        <p className="text-gray-300 mt-4 text-base  leading-relaxed">
+        <p className="text-gray-300 mt-4 text-base leading-relaxed">
           Experience an immersive journey through the{" "}
           <span className="text-purple-400 font-extrabold">Metaverse, AI,</span>{" "}
           and{" "}
@@ -56,14 +72,20 @@ export const ProgrammeSchedule = () => {
           Prepare to engage, explore, and experience the next evolution of the
           virtual world like never before!
         </p>
-      </div>
+      </motion.div>
 
       {/* Right Section - Schedule List */}
       <div className="max-w-xl space-y-4 w-full flex flex-col md:flex-row items-center md:gap-4">
         <div className="flex flex-col gap-4">
           {schedule.slice(0, 2).map(({ period, time, events }, index) => (
-            <div
+            <motion.div
               key={index}
+              variants={fadeInVariant}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.2 }}
+              whileHover={{ scale: 1.1 }}
+              transition={{ duration: 0.3 }}
               className="relative p-[2px] rounded-tl-[2rem] rounded-br-[2rem] overflow-hidden bg-gradient-to-r from-purple-500 via-pink-500 to-yellow-500"
             >
               <div className="p-6 bg-gradient-to-br from-black to-[#270427] rounded-tl-[2rem] rounded-br-[2rem]">
@@ -79,12 +101,20 @@ export const ProgrammeSchedule = () => {
                   ))}
                 </ul>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
 
         {/* Last Event */}
-        <div className="relative p-[2px] max-sm:w-full rounded-tl-[2rem] rounded-br-[2rem] overflow-hidden bg-gradient-to-r from-purple-500 via-pink-500 to-yellow-500">
+        <motion.div
+          variants={fadeInVariant}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          whileHover={{ scale: 1.1 }}
+          transition={{ duration: 0.3 }}
+          className="relative p-[2px] max-sm:w-full rounded-tl-[2rem] rounded-br-[2rem] overflow-hidden bg-gradient-to-r from-purple-500 via-pink-500 to-yellow-500"
+        >
           {/* Inner Box with Black Background */}
           <div className="p-6 bg-gradient-to-br from-black to-[#270427] rounded-tl-[2rem] rounded-br-[2rem]">
             <h3 className="text-xl md:text-2xl font-bold text-white drop-shadow-lg">
@@ -101,10 +131,10 @@ export const ProgrammeSchedule = () => {
               ))}
             </ul>
           </div>
-        </div>
+        </motion.div>
       </div>
 
       <BackgroundBeams />
-    </section>
+    </motion.section>
   );
 };

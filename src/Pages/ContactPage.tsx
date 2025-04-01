@@ -30,8 +30,8 @@ export const ContactPage = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-7xl px-8 md:px-20 py-12 mx-auto">
         {/* Contact Details */}
         <div className="space-y-6">
-          <div className="flex items-start gap-4">
-            <span className="text-2xl text-pink-500">📍</span>
+          <div className="flex items-start gap-8">
+            <div className="text-2xl text-pink-500">📍</div>
             <div>
               <h3 className="text-lg font-semibold">Our Location</h3>
               <p>Lagos Tech Arena, Victoria Island, Lagos, Nigeria</p>
@@ -39,7 +39,7 @@ export const ContactPage = () => {
           </div>
 
           <div className="flex items-start gap-4">
-            <span className="text-2xl text-purple-400">📞</span>
+            <div className="text-2xl text-purple-400">📞</div>
             <div>
               <h3 className="text-lg font-semibold">Phone</h3>
               <p>+234 812 345 6789</p>
@@ -47,7 +47,7 @@ export const ContactPage = () => {
           </div>
 
           <div className="flex items-start gap-4">
-            <span className="text-2xl text-yellow-400">✉️</span>
+            <div className="text-2xl text-yellow-400">✉️</div>
             <div>
               <h3 className="text-lg font-semibold">Email</h3>
               <p>hello@metaverseexpo.com</p>

@@ -15,7 +15,7 @@ export const Footer = () => {
         </div>
 
         {/* Middle - Navigation Links */}
-        <nav className="flex flex-wrap justify-center md:justify-start gap-6">
+        <nav className="flex max-md:text-sm flex-wrap justify-center md:justify-start gap-6">
           <NavLink
             to="/"
             className="text-white hover:text-purple-400 transition"

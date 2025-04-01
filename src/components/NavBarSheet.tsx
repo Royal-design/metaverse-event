@@ -6,7 +6,7 @@ import {
   SheetTrigger
 } from "@/components/ui/sheet";
 import { useState } from "react";
-import { HiMiniBars3BottomLeft } from "react-icons/hi2";
+import { FaBars } from "react-icons/fa6";
 import { NavLink } from "react-router-dom";
 
 import { IoCloseOutline } from "react-icons/io5";
@@ -20,7 +20,7 @@ export const NavBarSheet = () => {
         {!open ? (
           <div>
             <div onClick={() => setOpen(!open)}>
-              <HiMiniBars3BottomLeft size={20} />
+              <FaBars size={20} />
             </div>
           </div>
         ) : (

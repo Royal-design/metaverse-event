@@ -4,7 +4,7 @@ Welcome to the **Metaverse Expo: The Virtual Revolution** website! This project 
 
 ## 🌍 Live Demo
 
-🔗 [View the Website](#) _(Replace with your actual deployment link)_
+🔗 [click the link to access the site](https://metaverse-corex-event.vercel.app/)
 
 ---
 
@@ -25,4 +25,4 @@ Welcome to the **Metaverse Expo: The Virtual Revolution** website! This project 
 - **State Management:** Redux Toolkit
 - **Database & Authentication:** Firebase
 - **Image Hosting:** Cloudinary
-- **Deployment:** Vercel / Netlify
+- **Deployment:** Vercel

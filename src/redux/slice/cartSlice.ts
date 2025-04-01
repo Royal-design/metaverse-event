@@ -125,9 +125,17 @@ export const cartSlice = createSlice({
 
       localStorage.setItem("corex-cart", JSON.stringify(state));
       toast.success("All products cleared from cart");
+    },
+    order: (state) => {
+      state.items = [];
+      state.totalQuantity = 0;
+      state.totalPrice = 0;
+
+      localStorage.setItem("corex-cart", JSON.stringify(state));
+      toast.success("Order placed successfully");
     }
   }
 });
 
-export const { addToCart, clearCart, removeFromCart, updateCart } =
+export const { addToCart, clearCart, removeFromCart, updateCart, order } =
   cartSlice.actions;

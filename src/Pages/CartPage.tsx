@@ -1,4 +1,5 @@
 import { CartListMobile } from "@/components/CartListMobile";
+import { Checkout } from "@/components/Checkout";
 import { TableItem } from "@/components/TableItem";
 import { Button } from "@/components/ui/button";
 
@@ -9,14 +10,18 @@ import {
   TableHeader,
   TableRow
 } from "@/components/ui/table";
-import { clearCart } from "@/redux/slice/cartSlice";
+import { db } from "@/config/firebase";
+import { clearCart, order } from "@/redux/slice/cartSlice";
 import { RootState } from "@/redux/store";
 import { formatPrice } from "@/utilities/formatPrice";
+import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 export const CartPage = () => {
   const cartItems = useSelector((state: RootState) => state.cart.items);
+  const navigate = useNavigate();
   const totalQuantity = useSelector(
     (state: RootState) => state.cart.totalQuantity
   );
@@ -27,6 +32,15 @@ export const CartPage = () => {
     dispatch(clearCart());
   };
 
+  const handleToken = async () => {
+    const docRef = collection(db, "orders");
+    await addDoc(docRef, {
+      orders: cartItems,
+      createdAt: serverTimestamp()
+    });
+    dispatch(order());
+    navigate("/");
+  };
   return (
     <main className="">
       <div className="mb-12">
@@ -51,14 +65,22 @@ export const CartPage = () => {
                 </Button>
               </div>
               <div className="w-full  max-sm:hidden px-8">
-                <Table className="w-full">
+                <Table>
                   <TableHeader>
-                    <TableRow>
-                      <TableHead>Products</TableHead>
-                      <TableHead>Price</TableHead>
-                      <TableHead>Quantity</TableHead>
-                      <TableHead>Subtotal</TableHead>
-                      <TableHead className="text-right">Action</TableHead>
+                    <TableRow className=" border-b border-border-light hover:bg-[#1e0b1ea9]">
+                      <TableHead className="w-full text-white">
+                        Products
+                      </TableHead>
+                      <TableHead className="w-full text-white">Price</TableHead>
+                      <TableHead className="w-full text-white">
+                        Quantity
+                      </TableHead>
+                      <TableHead className="w-full text-white">
+                        Subtotal
+                      </TableHead>
+                      <TableHead className="text-right text-white">
+                        Action
+                      </TableHead>
                     </TableRow>
                   </TableHeader>
                   <TableBody>
@@ -88,6 +110,7 @@ export const CartPage = () => {
                   <p>Total</p>
                   <p>{formatPrice(totalPrice)}</p>
                 </article>
+                <Checkout totalPrice={totalPrice} handleToken={handleToken} />
               </div>
             </div>
           </section>

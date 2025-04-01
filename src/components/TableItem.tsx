@@ -38,7 +38,7 @@ export const TableItem = ({ item }: ItemType) => {
     }
   };
   return (
-    <TableRow className="h-[1rem]">
+    <TableRow className="h-[1rem] border-t border-border-light hover:bg-[#1e0b1ea9]">
       <TableCell className="font-medium  w-[20rem]">
         <figure className="flex items-center  gap-3">
           <img src={item.image} alt="image" className="w-[3rem] h-[3rem] " />

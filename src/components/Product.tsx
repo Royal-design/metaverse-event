@@ -3,6 +3,7 @@ import { ProductType } from "@/redux/slice/productSlice";
 import { useAppDispatch, useAppSelector } from "@/redux/store";
 import { formatPrice } from "@/utilities/formatPrice";
 import { Button } from "./ui/button";
+import { motion } from "framer-motion";
 
 export const Products = () => {
   const products = useAppSelector((state) => state.products.products);
@@ -10,8 +11,35 @@ export const Products = () => {
   const addToCartClick = (product: ProductType) => {
     dispatch(addToCart({ ...product, qty: 1 }));
   };
+
+  const staggeredVariant = {
+    hidden: { opacity: 0, scale: 0.8, y: 20 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      y: 0,
+      transition: {
+        duration: 1,
+        delay: 0.3,
+        staggerChildren: 0.3
+      }
+    }
+  };
+
+  const zoomInVariant = {
+    hidden: { opacity: 0, scale: 0.8 },
+    visible: { opacity: 1, scale: 1, transition: { duration: 0.6 } }
+  };
+
   return (
-    <section id="products" className="py-8 md:py-12 px-8 md:px-20 text-center">
+    <motion.section
+      variants={staggeredVariant}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.1 }}
+      id="products"
+      className="py-8 md:py-12 px-8 md:px-20 text-center"
+    >
       <h2 className="text-2xl md:text-4xl font-extrabold text-transparent bg-gradient-to-r from-purple-500 via-pink-500 to-yellow-500 bg-clip-text">
         Explore Our Exclusive Products
       </h2>
@@ -20,12 +48,12 @@ export const Products = () => {
       </p>
 
       {/* Product Cards */}
-
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-10">
         {products.map((product) => (
-          <div
+          <motion.div
+            variants={zoomInVariant}
             key={product.id}
-            className="bg-gradient-to-r pr-[1px] overflow-hidden from-purple-500 rounded-xl  via-pink-500 to-yellow-500"
+            className="bg-gradient-to-r pr-[1px] overflow-hidden from-purple-500 rounded-xl via-pink-500 to-yellow-500"
           >
             <div className="bg-gradient-to-br from-black to-[#270427] rounded-xl p-6 border border-gray-800 hover:border-purple-500 transition">
               <figure className="h-40">
@@ -50,9 +78,9 @@ export const Products = () => {
                 Buy Now
               </Button>
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
-    </section>
+    </motion.section>
   );
 };

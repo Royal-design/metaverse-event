@@ -46,18 +46,6 @@ export const Ticket = () => {
       <div className="flex flex-col items-start gap-[12px]  w-full">
         <div className=" max-md:hidden w-full"></div>
         <main className="flex flex-col justify-center pt-[27.5px]  max-md:pt-0 items-center gap-[32px] w-full">
-          <div className=" md:hidden w-full"></div>
-          <section className="flex flex-col items-center gap-[16px] w-full">
-            <p className="text-white text-center font-alatsi text-[32px] max-md:text-[24px] font-normal leading-none">
-              Your Ticket is Booked!
-            </p>
-            <p className="text-[#FAFAFA] max-md:hidden text-center font-roboto text-[16px] font-normal leading-[150%]">
-              Check your email for a copy or you can download
-            </p>
-            <p className="text-[#FAFAFA] md:hidden w-[287px] text-center font-roboto text-[16px] font-normal leading-[150%]">
-              You can download or Check your email for a copy
-            </p>
-          </section>
           <section className="flex flex-col items-center gap-6 w-full">
             <div
               id="ticket-information"
@@ -70,7 +58,7 @@ export const Ticket = () => {
                       <div className="flex w-full flex-col items-center gap-[20px] flex-shrink-0">
                         <article className="flex w-[175px] flex-col items-center">
                           <p className="text-white text-center font-road-rage text-[34px] font-normal leading-[100%]">
-                            Techember Fest ”25
+                            Metaverse Expo ”25
                           </p>
                           <div className="flex p-[4px] flex-col justify-center items-center gap-[4px]">
                             <p className="text-white font-roboto text-[10px] font-normal leading-[150%]">
