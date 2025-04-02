@@ -1,4 +1,3 @@
-import { Footer } from "@/components/Footer";
 import { Navbar } from "@/components/Navbar";
 import { Toaster } from "@/components/ui/sonner";
 import { Outlet } from "react-router-dom";
@@ -18,10 +17,9 @@ export const RootLayout = () => {
           }
         }}
       />
-      ;{!loginPage && !registerPage && <Navbar />}
+      {!loginPage && !registerPage && <Navbar />}
       <main className="pt-20 w-full flex flex-col justify-between min-h-screen">
         <Outlet />
-        {!loginPage && !registerPage && <Footer />}
       </main>
     </div>
   );

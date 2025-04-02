@@ -21,9 +21,10 @@ import { ChevronDown } from "lucide-react";
 import { ticketSchema } from "@/schema/schema";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { incrementStep, resetForm, updateForm } from "@/redux/slice/formSlice";
+import { resetForm, updateForm } from "@/redux/slice/formSlice";
 import { useAppDispatch } from "@/redux/store";
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const ticketType: {
   option: "Regular Access" | "VIP Access" | "VVIP Access";
@@ -55,7 +56,7 @@ const stepOneFormSchema = ticketSchema.pick({
 type StepOneFormSchema = z.infer<typeof stepOneFormSchema>;
 export const Form1 = () => {
   const dispatch = useAppDispatch();
-
+  const navigate = useNavigate();
   const storedFormData = JSON.parse(localStorage.getItem("formStep1") || "{}");
 
   const form = useForm<StepOneFormSchema>({
@@ -77,18 +78,12 @@ export const Form1 = () => {
 
   const onSubmit = async (data: StepOneFormSchema) => {
     dispatch(updateForm({ ...data }));
-    dispatch(incrementStep());
-    window.location.href = "/generate-ticket/step2";
+    navigate("/generate-ticket/step2");
     window.scrollTo({
       top: 0
     });
   };
 
-  useEffect(() => {
-    if (window.location.pathname === "/") {
-      window.history.replaceState({}, "", "/generate-ticket/step1");
-    }
-  }, []);
   return (
     <Form {...form}>
       <form
@@ -194,7 +189,7 @@ export const Form1 = () => {
                     value={field.value || undefined}
                   >
                     <FormControl>
-                      <SelectTrigger className="relative h-[48px] p-[16px] text-white border border-border-heavy text-[16px] leading-[28px] font-roboto">
+                      <SelectTrigger className="relative w-full  h-[48px] p-[16px] text-white border border-border-heavy text-[16px] leading-[28px] font-roboto">
                         <SelectValue placeholder="Select Ticket Number" />
                         <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 text-white w-6 h-6" />
                       </SelectTrigger>
@@ -234,12 +229,12 @@ export const Form1 = () => {
               >
                 Cancel
               </Button>
-              <Button className="hover:bg-button-background-lightest max-md:w-full transition-colors duration-200 flex px-6 py-6 max-md:py-[12px] justify-center items-center gap-2 flex-1 rounded-md bg-button-background-lighter">
+              <Button className="hover:bg-button-background-lightest text-white max-md:w-full transition-colors duration-200 flex px-6 py-6 max-md:py-[12px] justify-center items-center gap-2 flex-1 rounded-md bg-button-background-lighter">
                 Next
               </Button>
             </div>
-            <div className="flex md:hidden font-nanum-myeongjo max-md:flex-col items-start gap-4 flex-[1_0_0]">
-              <Button className="hover:bg-button-background-lightest max-md:w-full transition-colors duration-200 flex px-6 py-6 max-md:py-[12px] justify-center items-center gap-2 flex-1 rounded-md bg-button-background-lighter">
+            <div className="flex md:hidden  font-nanum-myeongjo max-md:flex-col items-start gap-4 flex-[1_0_0] ">
+              <Button className="hover:bg-button-background-lightest text-white max-md:w-full transition-colors duration-200 flex px-6 py-6 max-md:py-[12px] justify-center items-center gap-2 flex-1 rounded-md bg-button-background-lighter">
                 Next
               </Button>
               <Button

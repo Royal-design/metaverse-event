@@ -14,15 +14,12 @@ import { ticketSchema } from "@/schema/schema";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Input } from "./ui/input";
-import {
-  decrementStep,
-  incrementStep,
-  updateForm
-} from "@/redux/slice/formSlice";
+import { updateForm } from "@/redux/slice/formSlice";
 import { useAppDispatch, useAppSelector } from "@/redux/store";
 import { Mail } from "lucide-react";
 import { Textarea } from "./ui/textarea";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const stepTwoFormSchema = ticketSchema.pick({
   name: true,
@@ -35,9 +32,10 @@ type StepTwoFormSchema = z.infer<typeof stepTwoFormSchema>;
 const apiKey = import.meta.env.VITE_API_KEY;
 export const Form2 = () => {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   const type = useAppSelector((state) => state.form.ticketType);
-
   const savedData = JSON.parse(localStorage.getItem("formStepTwo") || "{}");
+
   const [uploadError, setUploadError] = useState<string | null>(null);
   const [imagePreview, setImagePreview] = useState<string | null>(
     savedData.image || null
@@ -59,8 +57,9 @@ export const Form2 = () => {
     const subscription = form.watch((values) => {
       localStorage.setItem("formStepTwo", JSON.stringify(values));
     });
+
     return () => subscription.unsubscribe();
-  }, [form.watch]);
+  }, [form]);
 
   const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -79,10 +78,11 @@ export const Form2 = () => {
         formData,
         {
           onUploadProgress: (progressEvent) => {
-            const progress = Math.round(
-              (progressEvent.loaded * 100) / (progressEvent.total || 1)
-            );
-            setUploadProgress(progress);
+            if (progressEvent.total) {
+              setUploadProgress(
+                Math.round((progressEvent.loaded * 100) / progressEvent.total)
+              );
+            }
           }
         }
       );
@@ -110,10 +110,9 @@ export const Form2 = () => {
   const onSubmit = async (data: StepTwoFormSchema) => {
     return new Promise((resolve) => {
       setTimeout(() => {
-        dispatch(updateForm({ ...data }));
-        dispatch(incrementStep());
+        dispatch(updateForm(data));
         localStorage.removeItem("formStepTwo");
-        window.location.href = "/generate-ticket/ticket";
+        navigate("/generate-ticket/ticket");
         window.scrollTo({ top: 0, behavior: "smooth" });
         resolve(true);
       }, 2000);
@@ -268,12 +267,12 @@ export const Form2 = () => {
 
           <div className="flex max-md:hidden  justify-between gap-4 font-nanum-myeongjo">
             <Button
-              onClick={() => {
-                dispatch(decrementStep());
+              onClick={(e) => {
+                e.preventDefault();
                 window.scrollTo({
                   top: 0
                 });
-                window.location.href = "/generate-ticket/step1";
+                navigate("/generate-ticket/step1");
               }}
               className="bg-button-background-heavy transition-colors duration-200 hover:bg-button-background-light text-white w-1/2 py-6 border border-border-light rounded-md"
             >
@@ -282,7 +281,7 @@ export const Form2 = () => {
 
             <Button
               disabled={form.formState.isSubmitting}
-              className="px-6 py-6 bg-button-background-lighter hover:bg-button-background-lightest flex-1 rounded-md flex items-center justify-center"
+              className="px-6 py-6 bg-button-background-lighter text-white hover:bg-button-background-lightest flex-1 rounded-md flex items-center justify-center"
             >
               {form.formState.isSubmitting ? (
                 <>
@@ -316,9 +315,8 @@ export const Form2 = () => {
 
           <div className="flex md:hidden w-full font-nanum-myeongjo max-md:flex-col items-start gap-4 flex-[1_0_0]">
             <Button
-              type="submit"
               disabled={form.formState.isSubmitting}
-              className="hover:bg-button-background-lightest  max-md:w-full transition-colors duration-200 flex px-6 py-6 max-md:py-[12px] justify-center items-center gap-2 flex-1 rounded-md bg-button-background-lighter"
+              className="hover:bg-button-background-lightest text-white  max-md:w-full transition-colors duration-200 flex px-6 py-6 max-md:py-[12px] justify-center items-center gap-2 flex-1 rounded-md bg-button-background-lighter"
             >
               {form.formState.isSubmitting ? (
                 <>
@@ -349,12 +347,12 @@ export const Form2 = () => {
               )}
             </Button>
             <Button
-              onClick={() => {
-                dispatch(decrementStep());
+              onClick={(e) => {
+                e.preventDefault();
                 window.scrollTo({
                   top: 0
                 });
-                window.location.href = "/generate-ticket/step1";
+                navigate("/generate-ticket/step1");
               }}
               className="flex bg-button-background-heavy max-md:w-full transition-colors duration-200 hover:bg-button-background-light max-md:py-[12px] text-white justify-center items-center gap-2 flex-1 rounded-md border border-border-light"
             >

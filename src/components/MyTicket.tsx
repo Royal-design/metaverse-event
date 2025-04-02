@@ -6,23 +6,33 @@ import { Button } from "./ui/button";
 import { useAppDispatch, useAppSelector } from "@/redux/store";
 import { resetForm } from "@/redux/slice/formSlice";
 import { DottedLine } from "./DottedLine";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
-export const Ticket = () => {
+export const MyTicket = () => {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   const user = useAppSelector((state) => state.form);
 
-  const downloadTicketPdf = () => {
+  useEffect(() => {
+    if (!user.name || !user.email || !user.ticketType) {
+      navigate("/generate-ticket");
+    }
+  }, [user, navigate]);
+
+  const downloadTicketPdf = async () => {
     const ticketElement = document.getElementById("ticket-information");
 
     if (!ticketElement) return;
 
-    html2canvas(ticketElement, {
-      scale: 3,
-      useCORS: true,
-      allowTaint: true
-    }).then((canvas) => {
-      const imgData = canvas.toDataURL("image/png");
+    try {
+      const canvas = await html2canvas(ticketElement, {
+        scale: 3,
+        useCORS: true,
+        allowTaint: true
+      });
 
+      const imgData = canvas.toDataURL("image/png");
       const pdf = new jsPDF({
         orientation: "p",
         unit: "mm",
@@ -38,7 +48,9 @@ export const Ticket = () => {
         pdf.internal.pageSize.height
       );
       pdf.save("ticket.pdf");
-    });
+    } catch (error) {
+      console.error("Error generating PDF:", error);
+    }
   };
 
   return (
@@ -191,7 +203,7 @@ export const Ticket = () => {
               </Button>
               <Button
                 onClick={downloadTicketPdf}
-                className=" hover:bg-button-background-lightest w-full transition-colors duration-200 flex px-6 py-6 justify-center items-center gap-2 flex-1 rounded-md bg-button-background-lighter"
+                className=" hover:bg-button-background-lightest text-white w-full transition-colors duration-200 flex px-6 py-6 justify-center items-center gap-2 flex-1 rounded-md bg-button-background-lighter"
               >
                 Download Ticket
               </Button>
@@ -199,7 +211,7 @@ export const Ticket = () => {
             <div className="flex md:hidden flex-col items-start w-full font-nanum-myeongjo gap-4 flex-[1_0_0]">
               <Button
                 onClick={downloadTicketPdf}
-                className=" hover:bg-button-background-lightest w-full transition-colors duration-200 flex px-6 py-4 justify-center items-center gap-2 flex-1 rounded-md bg-button-background-lighter"
+                className=" hover:bg-button-background-lightest text-white w-full transition-colors duration-200 flex px-6 py-4 justify-center items-center gap-2 flex-1 rounded-md bg-button-background-lighter"
               >
                 Download Ticket
               </Button>

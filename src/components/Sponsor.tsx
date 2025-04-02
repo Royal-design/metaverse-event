@@ -21,12 +21,12 @@ export const Sponsor = () => {
     <motion.div
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
-      viewport={{ once: true, amount: 0.5 }}
+      viewport={{ once: true, amount: 0.3 }}
       transition={{
         duration: 1
       }}
     >
-      <div className="md:px-20 px-8">
+      <div className="md:px-20 mt-12 px-8">
         <div className="">
           <div className="flex flex-col items-center gap-1">
             <h2 className="text-2xl  md:text-4xl font-extrabold text-transparent bg-gradient-to-r from-purple-500 via-pink-500 to-yellow-500 bg-clip-text">

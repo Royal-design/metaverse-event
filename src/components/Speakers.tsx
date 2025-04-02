@@ -26,7 +26,7 @@ export const Speakers = () => {
   ];
 
   return (
-    <section className="mt-8 md:mt-12 px-8 md:px-20 text-center">
+    <section className="py-8 md:py-12  px-8 md:px-20 text-center">
       <h2 className="text-2xl md:text-4xl  font-extrabold text-transparent bg-gradient-to-r from-purple-500 via-pink-500 to-yellow-500 bg-clip-text">
         Meet Our Keynote Speakers
       </h2>
@@ -38,7 +38,14 @@ export const Speakers = () => {
       {/* Speakers List */}
       <div className="flex flex-col md:flex-row justify-center gap-8 mt-12">
         {speakers.map((speaker, index) => (
-          <div
+          <motion.div
+            initial={{ opacity: 0, y: 20, scale: 0.8 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+            whileHover={{ scale: 1.03 }}
+            viewport={{ once: true, amount: 0.1 }}
+            transition={{
+              duration: 1
+            }}
             key={index}
             className="overflow-hidden rounded-tl-[2rem] rounded-br-[2rem] bg-gradient-to-r from-purple-500 via-pink-500 to-yellow-500 shadow-lg"
           >
@@ -57,7 +64,7 @@ export const Speakers = () => {
               </h3>
               <p className="text-sm text-purple-400">{speaker.title}</p>
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
     </section>

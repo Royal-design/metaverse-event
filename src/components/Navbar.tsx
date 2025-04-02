@@ -46,7 +46,7 @@ export const Navbar = () => {
           Contact
         </NavLink>
         <NavLink
-          to="/generate-ticket"
+          to="/generate-ticket/step1"
           className="text-white hover:text-neon-pink transition"
         >
           Get Ticket

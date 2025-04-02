@@ -8,8 +8,13 @@ import { ProgrammeSchedule } from "@/components/ProgrammeSchedule";
 import { Speakers } from "@/components/Speakers";
 import { Sponsor } from "@/components/Sponsor";
 import { useEffect } from "react";
+import { Footer } from "@/components/Footer";
+import { useAppSelector } from "@/redux/store";
 
 export const HomePage = () => {
+  const ticketdata = useAppSelector((state) => state.form);
+  console.log(ticketdata);
+
   useEffect(() => {
     window.scrollTo({ top: 0 });
   }, []);
@@ -19,7 +24,7 @@ export const HomePage = () => {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.8 }
+      transition: { duration: 0.6 }
     }
   };
 
@@ -82,6 +87,7 @@ export const HomePage = () => {
       >
         <Sponsor />
       </motion.div>
+      <Footer />
     </motion.div>
   );
 };

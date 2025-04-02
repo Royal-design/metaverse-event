@@ -7,7 +7,7 @@ export const HomeHeroSection = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 1 }}
-      className="h-[calc(100vh-7rem)] [clip-path:polygon(0_0,100%_0,100%_90%,0_100%)] relative"
+      className="h-[calc(100vh-12rem)]  md:h-[calc(100vh-7rem)] [clip-path:polygon(0_0,100%_0,100%_90%,0_100%)] relative"
     >
       <img
         src="https://img.freepik.com/premium-vector/3d-virtual-reality-helmet-metaverse-concept-augmented-reality-cyberspace-internet-web-game-online-battle-digital-competition-gaming-cup-neon-light-vector-illustration_115739-1782.jpg?ga=GA1.1.695003139.1726237092&semt=ais_hybrid"

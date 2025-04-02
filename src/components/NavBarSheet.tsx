@@ -66,7 +66,7 @@ export const NavBarSheet = () => {
           </NavLink>
           <NavLink
             onClick={() => setOpen(!open)}
-            to="/generate-ticket"
+            to="/generate-ticket/step1"
             className="text-white hover:text-neon-pink transition"
           >
             Get Ticket
