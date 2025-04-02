@@ -8,6 +8,7 @@ import { resetForm } from "@/redux/slice/formSlice";
 import { DottedLine } from "./DottedLine";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
+import { Separator } from "./ui/separator";
 
 export const MyTicket = () => {
   const dispatch = useAppDispatch();
@@ -66,7 +67,7 @@ export const MyTicket = () => {
               <div className="w-[300px] h-full">
                 <div className="relative flex flex-col justify-center items-center w-full ">
                   <div className="w-[300px] border-b-0 p-8 aspect-[1.5] border border-border-light bg-background-light mask-rounded">
-                    <div className=" flex  p-[14px] items-center flex-shrink-0 rounded-[16px] border border-border-light bg-background-light backdrop-blur-[2px]">
+                    <div className=" flex  p-[8px] items-center flex-shrink-0 rounded-[16px] border border-border-light bg-background-light backdrop-blur-[2px]">
                       <div className="flex w-full flex-col items-center gap-[20px] flex-shrink-0">
                         <article className="flex w-[175px] flex-col items-center">
                           <p className="text-white text-center font-road-rage text-[34px] font-normal leading-[100%]">
@@ -89,70 +90,52 @@ export const MyTicket = () => {
                           />
                         </figure>
                         <div
-                          className="flex p-1 flex-col justify-center items-center  rounded-lg border border-border-light bg-background-light w-full"
+                          className="flex p-1 h-full flex-col justify-center items-center  rounded-lg border border-border-light bg-background-light w-full"
                           style={{
                             wordBreak: "break-word",
                             overflowWrap: "break-word",
                             width: "100%"
                           }}
                         >
-                          <div className="flex items-start gap-2 w-full border-b border-b-border-light">
-                            <div className="flex p-1 flex-col justify-start  items-start gap-1 flex-1 border-r border-border-light w-full ">
-                              <p className="text-white   font-roboto text-xs font-normal leading-[150%] opacity-33">
+                          <div className="flex h-full w-full border-b border-border-light">
+                            <div className="flex p-1 flex-col justify-start  w-1/2">
+                              <p className="text-white font-roboto text-xs font-normal leading-[150%] opacity-33">
                                 Enter your name
                               </p>
-                              <p
-                                className="text-white h-full font-roboto text-sm font-bold leading-[150%] w-full max-w-full"
-                                style={{
-                                  wordBreak: "break-word",
-                                  overflowWrap: "break-word"
-                                }}
-                              >
+
+                              <p className="text-white h-full font-roboto text-sm font-bold leading-[150%] w-full max-w-full">
                                 {user ? user.name : "Avi Chukwu"}
                               </p>
                             </div>
-                            <div className="flex p-1 h-auto flex-col justify-start items-start gap-1 flex-1 w-full min-w-0">
-                              <p className="text-white  font-roboto text-xs font-normal leading-[150%] opacity-33">
+                            <div className="border-l border-border-light"></div>
+
+                            <div className="flex p-1 flex-col justify-start flex-1">
+                              <p className="text-white font-roboto text-xs font-normal leading-[150%] opacity-33">
                                 Enter your email *
                               </p>
-                              <p
-                                className="text-white h-full font-roboto text-sm font-bold leading-[150%] w-full max-w-full"
-                                style={{
-                                  wordBreak: "break-word",
-                                  overflowWrap: "break-word"
-                                }}
-                              >
+                              <p className="text-white h-full font-roboto text-xs font-bold leading-[150%] w-full max-w-full">
                                 {user ? user.email : "User@email.com"}
                               </p>
                             </div>
                           </div>
 
-                          <div className="flex items-start gap-2 self-stretch border-b border-b-border-light w-full">
-                            <div className="flex p-1 flex-col justify-center items-start gap-1 flex-1 border-r border-border-light w-full ">
-                              <p className="text-white font-roboto text-xs font-normal leading-[150%] opacity-33">
+                          <div className="flex h-full w-full border-b border-border-light">
+                            <div className="flex p-1 flex-col justify-start  w-1/2 ">
+                              <p className="text-white   font-roboto text-xs font-normal leading-[150%] opacity-33">
                                 Ticket Type:
                               </p>
-                              <p
-                                className="text-white font-roboto text-xs font-normal leading-[150%] w-full max-w-full"
-                                style={{
-                                  wordBreak: "break-word",
-                                  overflowWrap: "break-word"
-                                }}
-                              >
+
+                              <p className="text-white h-full font-roboto text-sm font-bold leading-[150%] w-full max-w-full">
                                 {user ? user.ticketType : "VIP"}
                               </p>
                             </div>
-                            <div className="flex p-1 flex-col justify-center items-start gap-1 flex-1 w-full min-w-0">
-                              <p className="text-white font-roboto text-xs font-normal leading-[150%] opacity-33">
+                            <div className="border-l border-border-light"></div>
+
+                            <div className="flex p-1 flex-col justify-start flex-1">
+                              <p className="text-white  font-roboto text-xs font-normal leading-[150%] opacity-33">
                                 Ticket for :
                               </p>
-                              <p
-                                className="text-white font-roboto text-xs font-normal leading-[150%] w-full max-w-full"
-                                style={{
-                                  wordBreak: "break-word",
-                                  overflowWrap: "break-word"
-                                }}
-                              >
+                              <p className="text-white h-full font-roboto text-xs font-bold leading-[150%] w-full max-w-full">
                                 {user ? user.ticketNumber : "1"}
                               </p>
                             </div>
