@@ -64,7 +64,7 @@ export const Footer = () => {
 
       {/* Bottom Line */}
       <div className="border-t border-gray-700 mt-8 pt-6 text-center text-sm text-gray-500">
-        © {new Date().getFullYear()} Metaverse Expo. All rights reserved.
+        © {new Date().getFullYear()} Emmanuel. All rights reserved.
       </div>
     </footer>
   );

@@ -8,7 +8,6 @@ import { resetForm } from "@/redux/slice/formSlice";
 import { DottedLine } from "./DottedLine";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
-import { Separator } from "./ui/separator";
 
 export const MyTicket = () => {
   const dispatch = useAppDispatch();
