@@ -32,7 +32,14 @@ export const HomePage = () => {
     <motion.div>
       <HomeHeroSection />
 
-      <LineSkew />
+      <motion.div
+        initial={{ scale: 0.7, opacity: 0 }}
+        whileInView={{ scale: 1, opacity: 1 }}
+        transition={{ delay: 1, duration: 0.5 }}
+        viewport={{ once: true, amount: 0.1 }}
+      >
+        <LineSkew />
+      </motion.div>
 
       <motion.div
         variants={inViewVariant}

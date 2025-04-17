@@ -11,15 +11,6 @@ export const ExperiencePage = () => {
     });
   }, []);
 
-  const inViewVariant = {
-    hidden: { opacity: 0, y: 30 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.8, ease: "easeOut" }
-    }
-  };
-
   return (
     <div>
       <section className="relative experience font-roboto flex flex-col items-center ">
@@ -30,26 +21,41 @@ export const ExperiencePage = () => {
             className="h-full w-full object-cover"
           />
           <article className="absolute h-full max-sm:px-4 text-center inset-0 bg-gradient-to-br from-black to-[#27042770]  flex flex-col  items-center justify-center">
-            <h1 className="text-2xl max-sm:mt-4 md:text-4xl font-extrabold text-transparent bg-gradient-to-r from-purple-500 via-pink-500 to-yellow-500 bg-clip-text">
+            <motion.h1
+              initial={{ y: -10, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="text-2xl max-sm:mt-4 md:text-4xl font-extrabold text-transparent bg-gradient-to-r from-purple-500 via-pink-500 to-yellow-500 bg-clip-text"
+            >
               Step Into the Future
-            </h1>
+            </motion.h1>
 
-            <p className="text-gray-300 max-w-4xl mt-4 text-lg md:text-xl leading-relaxed">
+            <motion.p
+              initial={{ y: 10, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              className="text-gray-300 max-w-4xl mt-4 text-lg md:text-xl leading-relaxed"
+            >
               Experience the Metaverse Expo like never before. Immerse yourself
               in interactive virtual worlds, AI-powered experiences, and
               next-gen Web3 innovations.
-            </p>
-            <p className="text-gray-400 mt-4 md:text-lg max-sm:mb-4 max-w-2xl mx-auto">
+            </motion.p>
+            <motion.p
+              initial={{ scale: 0.7, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 0.5, delay: 0.5 }}
+              className="text-gray-400 mt-4 md:text-lg max-sm:mb-4 max-w-2xl mx-auto"
+            >
               Whether you're a tech enthusiast, developer, or business leader,
               this is your gateway to the digital revolution.
-            </p>
+            </motion.p>
           </article>
         </div>
         <div className="w-full px-8 md:px-20 md:text-center pt-12">
           <motion.div
-            variants={inViewVariant}
-            initial="hidden"
-            whileInView="visible"
+            initial={{ y: 20, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            transition={{ duration: 1, delay: 0.2 }}
             viewport={{ once: true, amount: 0.1 }}
             className="max-w-5xl  mb-16"
           >

@@ -10,9 +10,9 @@ export const HomeHeroSection = () => {
       className="h-[calc(100vh-12rem)]  md:h-[calc(100vh-7rem)] [clip-path:polygon(0_0,100%_0,100%_90%,0_100%)] relative"
     >
       <img
-        src="https://img.freepik.com/premium-vector/3d-virtual-reality-helmet-metaverse-concept-augmented-reality-cyberspace-internet-web-game-online-battle-digital-competition-gaming-cup-neon-light-vector-illustration_115739-1782.jpg?ga=GA1.1.695003139.1726237092&semt=ais_hybrid"
+        src="https://img.freepik.com/premium-photo/close-up-light-painting-against-black-background_1048944-6723653.jpg?ga=GA1.1.695003139.1726237092&semt=ais_hybrid&w=740"
         alt="metaverse-hero"
-        className="absolute inset-0 h-full w-full object-cover"
+        className="absolute inset-0 h-full w-full object-contain object-top"
       />
 
       <div className="absolute inset-0 bg-gradient-to-br from-black/80 to-[#2704274d]" />
@@ -51,7 +51,7 @@ export const HomeHeroSection = () => {
           <motion.div whileHover={{ scale: 1.1 }}>
             <Link
               to="/generate-ticket"
-              className="px-6 py-3 bg-neon-pink text-black font-semibold rounded-lg shadow-lg bg-[#ec3a90] hover:bg-[#f060a6] transition"
+              className="px-6 py-3 bg-neon-pink text-black font-semibold rounded-lg shadow-lg bg-[#ec3a90] hover:bg-[#f060a6] transition-colors duration-200"
             >
               Get Tickets
             </Link>
@@ -59,7 +59,7 @@ export const HomeHeroSection = () => {
           <motion.div whileHover={{ scale: 1.1 }}>
             <Link
               to="/about"
-              className="px-6 py-3 border border-purple-600 bg-transparent text-purple-600 font-semibold rounded-lg shadow-lg hover:bg-purple-600 hover:text-black transition"
+              className="px-6 py-3 border border-purple-600 bg-transparent duration-200 text-purple-600 font-semibold rounded-lg shadow-lg hover:bg-purple-600 hover:text-black transition-colors"
             >
               Learn More
             </Link>

@@ -9,16 +9,6 @@ export const Aboutpage = () => {
     });
   }, []);
 
-  // Variants for sliding in from left and right
-  const slideInVariantLeft = {
-    hidden: { opacity: 0, x: -100 },
-    visible: {
-      opacity: 1,
-      x: 0,
-      transition: { duration: 1 }
-    }
-  };
-
   return (
     <div>
       <section className="min-h-screen text-white">
@@ -29,14 +19,24 @@ export const Aboutpage = () => {
             className="h-full md:absolute right-0 object-right object-cover"
           />
           <article className="absolute h-full max-sm:px-4 inset-0 bg-gradient-to-br from-black to-[#27042770] flex flex-col gap-4 items-center justify-center">
-            <h1 className="text-2xl text-center md:text-4xl font-bold text-transparent bg-gradient-to-r from-purple-500 via-pink-500 to-yellow-500 bg-clip-text">
+            <motion.h1
+              initial={{ y: -10, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="text-2xl text-center md:text-4xl font-bold text-transparent bg-gradient-to-r from-purple-500 via-pink-500 to-yellow-500 bg-clip-text"
+            >
               Welcome to the Future of Digital Existence
-            </h1>
+            </motion.h1>
 
-            <p className="text-gray-300 text-center max-w-4xl mt-4 text-lg md:text-xl leading-relaxed">
+            <motion.p
+              initial={{ scale: 0.7, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="text-gray-300 text-center max-w-4xl mt-4 text-lg md:text-xl leading-relaxed"
+            >
               The Metaverse Expo is more than an event, it’s a gateway to a new
               dimension of technology, innovation, and limitless imagination.
-            </p>
+            </motion.p>
           </article>
         </div>
 
@@ -44,9 +44,9 @@ export const Aboutpage = () => {
           {/* STORY SECTION */}
           <motion.div
             whileInView={{ opacity: 1, y: 0 }}
-            initial={{ opacity: 0, y: -10 }}
+            initial={{ opacity: 0, y: 20 }}
             viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 1, delay: 0.1 }}
             className="bg-black bg-opacity-30 md:p-10 p-6 rounded-2xl border border-purple-700 mb-12 shadow-lg"
           >
             <h2 className="text-2xl md:text-3xl font-bold text-purple-400 mb-4">
@@ -63,10 +63,10 @@ export const Aboutpage = () => {
 
           {/* MISSION + VISION */}
           <motion.div
-            variants={slideInVariantLeft}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.1 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, y: -20 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 1, delay: 0.2 }}
             className="grid md:grid-cols-2 gap-10 mb-16"
           >
             <motion.div
@@ -74,9 +74,7 @@ export const Aboutpage = () => {
               whileInView={{ opacity: 1, y: 0 }}
               whileHover={{ scale: 1.03, border: "1px solid yellow" }}
               viewport={{ once: true, amount: 0.3 }}
-              transition={{
-                duration: 1
-              }}
+              transition={{ duration: 1, delay: 0.1 }}
               className="bg-black bg-opacity-30 md:p-10 p-6 rounded-xl border border-pink-500"
             >
               <h3 className="text-2xl md:text-3xl  font-semibold text-pink-400 mb-4">
@@ -93,9 +91,7 @@ export const Aboutpage = () => {
               whileInView={{ opacity: 1, y: 0 }}
               whileHover={{ scale: 1.03, border: "1px solid yellow" }}
               viewport={{ once: true, amount: 0.3 }}
-              transition={{
-                duration: 1
-              }}
+              transition={{ duration: 1, delay: 0.1 }}
               className="bg-black bg-opacity-30 md:p-10 p-6  rounded-xl border border-yellow-500"
             >
               <h3 className="text-2xl md:text-3xl font-semibold text-yellow-400 mb-4">
@@ -115,9 +111,7 @@ export const Aboutpage = () => {
             whileInView={{ opacity: 1, y: 0 }}
             whileHover={{ scale: 1.03, border: "1px solid yellow" }}
             viewport={{ once: true, amount: 0.3 }}
-            transition={{
-              duration: 1
-            }}
+            transition={{ duration: 1, delay: 0.2 }}
             className="bg-black bg-opacity-30 md:p-10 p-6 rounded-xl mb-16 border border-purple-500"
           >
             <h3 className="text-2xl md:text-3xl  font-bold text-purple-400 mb-6 md:text-center">
@@ -147,10 +141,10 @@ export const Aboutpage = () => {
 
           {/* WHY IT MATTERS */}
           <motion.div
-            variants={slideInVariantLeft}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.1 }}
+            initial={{ y: 10, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            transition={{ duration: 1, delay: 0.3 }}
+            viewport={{ once: true, amount: 0.2 }}
             className="bg-black bg-opacity-30 md:p-10 p-6 rounded-xl border border-pink-600 shadow-lg mb-16"
           >
             <h3 className="text-2xl md:text-3xl  font-bold text-pink-400 mb-4 md:text-center">
