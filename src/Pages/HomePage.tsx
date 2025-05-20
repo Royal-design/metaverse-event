@@ -9,12 +9,8 @@ import { Speakers } from "@/components/Speakers";
 import { Sponsor } from "@/components/Sponsor";
 import { useEffect } from "react";
 import { Footer } from "@/components/Footer";
-import { useAppSelector } from "@/redux/store";
 
 export const HomePage = () => {
-  const ticketdata = useAppSelector((state) => state.form);
-  console.log(ticketdata);
-
   useEffect(() => {
     window.scrollTo({ top: 0 });
   }, []);
